@@ -3,49 +3,55 @@
     <header>
       <div class="navbar-fixed" style="height: 95px">
         <nav class="navbar blue darken-1" style="height: 95px">
-          <div class="nav-wrapper aling-v">
-            <a
-              data-target="slide-out"
-              class="sidenav-trigger left"
-              v-bind:class="{ 'button-collapse': sidebar }"
-              v-on:click="collapse()"
-            >
-              <i class="material-icons white-text">menu</i>
-            </a>
-            <h6 class="linea space">Créditos ganados: 2000</h6>
-            <h6 class="linea space">Créditos disponibles: 1000</h6>
-            <div class="linea space-img">
+          <div class="nav-wrapper nav-menu aling-v">
+            <div>
+              <a
+                data-target="slide-out"
+                class="sidenav-trigger left"
+                v-bind:class="{ 'button-collapse': sidebar }"
+                v-on:click="collapse()"
+              >
+                <i class="material-icons white-text">menu</i>
+              </a>
+            </div>
+            <div>
+              <h6 class="linea">Créditos ganados: 2000</h6>
+              <h6 class="linea space">Créditos disponibles: 1000</h6>
+            </div>
+            <div class="linea">
               <img
                 class="logo-min circle-nav"
                 src="images/default.png"
                 alt=""
               />
             </div>
-            <ul class="navbar-nav ml-auto linea">
-              <li class="nav-item dropdown">
-                <a 
-                  id="navbarDropdown" 
-                  class="nav-link dropdown-toggle" 
-                  href="#" 
-                  role="button" 
-                  data-toggle="dropdown" 
-                  aria-haspopup="true" 
-                  aria-expanded="false"
-                  style="font-size: 17px"
-                >
-                  {{ user }}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <div class="linea">
+              <ul class="navbar-nav ml-auto ">
+                <li class="nav-item dropdown">
                   <a 
-                    class="dropdown-item" href="#"
-                    @click="logout()"
-                    style="font-size: 17px"
+                    id="navbarDropdown" 
+                    class="nav-link dropdown-toggle" 
+                    href="#" 
+                    role="button" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false"
+                    style="font-size: 17px; color: white"
                   >
-                    cerrar sessión
+                    {{ user }}
                   </a>
-                </div>
-              </li>
-            </ul>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a 
+                      class="dropdown-item" href="#"
+                      @click="logout()"
+                      style="font-size: 17px"
+                    >
+                      cerrar sessión
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </div>
@@ -61,54 +67,84 @@
         </li>
         <li>
           <ul class="collapsible collapsible-accordion left-p top-m top-p">
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': raiz }">
               <router-link 
-                to="/" 
+                :to="{
+                  name: 'Raiz', 
+                  params: { 
+                    user 
+                  } 
+                }" 
                 class="collapsible-header" 
                 tabindex="0"
               >
                 <h5 class="black-text name">Panel</h5>
               </router-link>
             </li>
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': home }">
               <router-link 
-                to="/home" 
+                :to="{
+                  name: 'Home', 
+                  params: { 
+                    user 
+                  } 
+                }"  
                 class="collapsible-header" 
                 tabindex="0"  
               >
                 <h5 class="black-text name">Notificaciones</h5>
               </router-link>
             </li>
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': recurso }">
               <router-link
-                to="/investigadores"
+                :to="{
+                  name: 'Form', 
+                  params: { 
+                    form 
+                  } 
+                }"
                 class="collapsible-header"
                 tabindex="0"
               >
                 <h5 class="black-text name">Mis recursos</h5>
               </router-link>
             </li>
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': propuesta }">
               <router-link
-                to="/research"
+                :to="{
+                  name: 'Home', 
+                  params: { 
+                    user 
+                  } 
+                }" 
                 class="collapsible-header"
                 tabindex="0"
               >
                 <h5 class="black-text name">Propuestas</h5>
               </router-link>
             </li>
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': compensar }">
               <router-link
-                to="/profileResearch"
+                :to="{
+                  name: 'Home', 
+                  params: { 
+                    user 
+                  } 
+                }" 
                 class="collapsible-header"
                 tabindex="0"
               >
                 <h5 class="black-text name">Compensar</h5>
               </router-link>
             </li>
-            <li class="waves-effect">
+            <li class="waves-effect" :class="{ 'active': cuenta }">
               <router-link
-                to="/reports"
+                :to="{
+                  name: 'Home', 
+                  params: { 
+                    user 
+                  } 
+                }" 
                 class="collapsible-header"
                 tabindex="0"
               >
@@ -124,10 +160,16 @@
 
 <script>
 export default {
-  props: ['user', 'route'],
+  props: ['user', 'route', 'form'],
   data() {
     return {
       sidebar: false,
+      raiz: false,
+      home: false,
+      recurso: true,
+      propuesta: false,
+      compensar: false,
+      cuenta: false
     };
   },
   methods: {
@@ -219,12 +261,11 @@ export default {
 }
 
 .space {
-  margin-left: 30px;
+  margin-left: 2.5vh;
 }
 
-.space-img {
-  margin-left: 40vh;
-  margin-right: 2.5vh;
+.nav-menu {
+  width: 72%;
 }
 
 .aling-v {

@@ -54,11 +54,14 @@
             <header-vue 
                 user="{{ Auth::user()->name }}"
                 route="{{ route('logout') }}"
+                :form="form"
             ></header-vue>        
             <transition>       
                 <router-view></router-view>
             </transition>
             <footer-vue
+                :form="form"
+                @change="changeForm"
             ></footer-vue>
         @endauth
     </div>

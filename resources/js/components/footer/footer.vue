@@ -20,7 +20,7 @@
         >
       </div>
       <div>
-        <button class="btn gray">Siguiente</button>
+        <button class="btn" :class="[ form ? 'green' : 'gray']" @click="changeForm" v-text="form ? 'Registrar red social' : 'Siguiente'"></button>
       </div>
     </footer>
   </div>
@@ -28,10 +28,21 @@
 
 <script>
 export default {
+  props: ['form'],
   name: "Footer",
   data: () => ({
-    amount: 0
-  })
+    amount: 0,
+  }),
+  methods: {
+    changeForm() {
+      this.$emit('change', !this.form)
+      if (!this.form) {
+        this.amount = 100
+      } else {
+        this.amount = 0
+      }
+    }
+  }
 }
 </script>
 
@@ -48,6 +59,10 @@ export default {
   z-index: 99999 !important;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.gray {
+  background: silver;
 }
 
 .aling-v {

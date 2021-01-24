@@ -5,7 +5,6 @@
                 <h3 class="center-align" > ¡ Bienvenido ! {{ user }} </h3>
             </div>
         </div>
-
         <div class="row">
             <div class="col m12 s12 center-align">
                 <img src="images/covid-19.svg" class="imagen-portada center-align" alt="">

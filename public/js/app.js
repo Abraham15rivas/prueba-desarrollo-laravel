@@ -2086,22 +2086,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       start_date: null,
       finish_date: null,
-      array: [],
-      radio: null,
+      category: [],
+      advertising: null,
       country: null,
       language: null,
       despcrition: null,
       name: null,
       email: null,
       url: null,
-      single: null
+      photo: null
     };
   },
   watch: {
@@ -2184,7 +2182,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      array: []
+      service: [],
+      price: [],
+      discount: []
     };
   }
 });
@@ -39804,37 +39804,109 @@ var render = function() {
       [
         _c("label", { attrs: { for: "name" } }, [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("input", { attrs: { type: "text", name: "name", id: "name" } }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
+            }
+          ],
+          attrs: { type: "text", name: "name", id: "name" },
+          domProps: { value: _vm.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
         _vm._v(" "),
-        _c("input", { attrs: { type: "text", name: "email", id: "email" } }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
+            }
+          ],
+          attrs: { type: "text", name: "email", id: "email" },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c("label", { attrs: { for: "url" } }, [_vm._v("URL de facebook")]),
         _vm._v(" "),
-        _c("input", { attrs: { type: "url", name: "url", id: "url" } }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.url,
+              expression: "url"
+            }
+          ],
+          attrs: { type: "url", name: "url", id: "url" },
+          domProps: { value: _vm.url },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.url = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c("label", { attrs: { for: "description" } }, [
           _vm._v("Descripción de la web")
         ]),
         _vm._v(" "),
         _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.description,
+              expression: "description"
+            }
+          ],
           attrs: {
             name: "despcrition",
             id: "despcrition",
             cols: "30",
             rows: "10"
+          },
+          domProps: { value: _vm.description },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.description = $event.target.value
+            }
           }
         }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "country" } }, [
-          _vm._v("País mayoria de la audiencia")
-        ]),
         _vm._v(" "),
         _c(
           "md-field",
           [
-            _c("label", { attrs: { for: "country" } }),
+            _c("label", { attrs: { for: "country" } }, [
+              _vm._v("País mayoria de la audiencia")
+            ]),
             _vm._v(" "),
             _c(
               "md-select",
@@ -39865,12 +39937,10 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("label", { attrs: { for: "language" } }, [_vm._v("Idioma")]),
-        _vm._v(" "),
         _c(
           "md-field",
           [
-            _c("label", { attrs: { for: "language" } }),
+            _c("label", { attrs: { for: "language" } }, [_vm._v("Idioma")]),
             _vm._v(" "),
             _c(
               "md-select",
@@ -39911,11 +39981,11 @@ var render = function() {
               {
                 attrs: { value: true },
                 model: {
-                  value: _vm.radio,
+                  value: _vm.advertising,
                   callback: function($$v) {
-                    _vm.radio = $$v
+                    _vm.advertising = $$v
                   },
-                  expression: "radio"
+                  expression: "advertising"
                 }
               },
               [
@@ -39936,11 +40006,11 @@ var render = function() {
               {
                 attrs: { value: false },
                 model: {
-                  value: _vm.radio,
+                  value: _vm.advertising,
                   callback: function($$v) {
-                    _vm.radio = $$v
+                    _vm.advertising = $$v
                   },
-                  expression: "radio"
+                  expression: "advertising"
                 }
               },
               [
@@ -39956,15 +40026,15 @@ var render = function() {
         _c(
           "md-field",
           [
-            _c("label", [_vm._v("Single")]),
+            _c("label", [_vm._v("Foto")]),
             _vm._v(" "),
             _c("md-file", {
               model: {
-                value: _vm.single,
+                value: _vm.photo,
                 callback: function($$v) {
-                  _vm.single = $$v
+                  _vm.photo = $$v
                 },
-                expression: "single"
+                expression: "photo"
               }
             })
           ],
@@ -39981,11 +40051,11 @@ var render = function() {
               {
                 attrs: { value: "1" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -39996,11 +40066,11 @@ var render = function() {
               {
                 attrs: { value: "2" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40011,11 +40081,11 @@ var render = function() {
               {
                 attrs: { value: "3" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40026,11 +40096,11 @@ var render = function() {
               {
                 attrs: { value: "4" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40047,11 +40117,11 @@ var render = function() {
               {
                 attrs: { value: "5" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40062,11 +40132,11 @@ var render = function() {
               {
                 attrs: { value: "6" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40077,11 +40147,11 @@ var render = function() {
               {
                 attrs: { value: "7" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40092,11 +40162,11 @@ var render = function() {
               {
                 attrs: { value: "8" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40113,11 +40183,11 @@ var render = function() {
               {
                 attrs: { value: "9" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40128,11 +40198,11 @@ var render = function() {
               {
                 attrs: { value: "10" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40143,11 +40213,11 @@ var render = function() {
               {
                 attrs: { value: "11" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40158,11 +40228,11 @@ var render = function() {
               {
                 attrs: { value: "12" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40179,11 +40249,11 @@ var render = function() {
               {
                 attrs: { value: "13" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40194,11 +40264,11 @@ var render = function() {
               {
                 attrs: { value: "14" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40209,11 +40279,11 @@ var render = function() {
               {
                 attrs: { value: "15" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40224,11 +40294,11 @@ var render = function() {
               {
                 attrs: { value: "16" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40245,11 +40315,11 @@ var render = function() {
               {
                 attrs: { value: "17" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40260,11 +40330,11 @@ var render = function() {
               {
                 attrs: { value: "18" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40275,11 +40345,11 @@ var render = function() {
               {
                 attrs: { value: "19" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40290,11 +40360,11 @@ var render = function() {
               {
                 attrs: { value: "20" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40311,11 +40381,11 @@ var render = function() {
               {
                 attrs: { value: "21" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40326,11 +40396,11 @@ var render = function() {
               {
                 attrs: { value: "22" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40341,11 +40411,11 @@ var render = function() {
               {
                 attrs: { value: "23" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40356,11 +40426,11 @@ var render = function() {
               {
                 attrs: { value: "24" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40377,11 +40447,11 @@ var render = function() {
               {
                 attrs: { value: "25" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40392,11 +40462,11 @@ var render = function() {
               {
                 attrs: { value: "26" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40407,11 +40477,11 @@ var render = function() {
               {
                 attrs: { value: "27" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40422,11 +40492,11 @@ var render = function() {
               {
                 attrs: { value: "28" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40443,11 +40513,11 @@ var render = function() {
               {
                 attrs: { value: "29" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Animales")]
@@ -40458,11 +40528,11 @@ var render = function() {
               {
                 attrs: { value: "30" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Diarios")]
@@ -40473,11 +40543,11 @@ var render = function() {
               {
                 attrs: { value: "31" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Deportes")]
@@ -40488,11 +40558,11 @@ var render = function() {
               {
                 attrs: { value: "32" },
                 model: {
-                  value: _vm.array,
+                  value: _vm.category,
                   callback: function($$v) {
-                    _vm.array = $$v
+                    _vm.category = $$v
                   },
-                  expression: "array"
+                  expression: "category"
                 }
               },
               [_vm._v("Fotografia y diseño")]
@@ -40562,7 +40632,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "advertising" } }, [
+    return _c("label", { attrs: { for: "category" } }, [
       _c("b", [_vm._v("Categoria a la que pertenece tu red social (máximo 3)")])
     ])
   },
@@ -40570,15 +40640,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "advertising" } }, [
-      _c("b", [_vm._v("Modo de Vacaciones")])
-    ])
+    return _c("label", [_c("b", [_vm._v("Modo de Vacaciones")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "advertising" } }, [
+    return _c("label", [
       _c("b", [
         _vm._v(
           "Configurar el Modo de Vaciones si quieres desactivar este recurso durante una temporada"
@@ -40618,13 +40686,13 @@ var render = function() {
               _c(
                 "md-checkbox",
                 {
-                  attrs: { value: "1" },
+                  attrs: { value: "photo" },
                   model: {
-                    value: _vm.array,
+                    value: _vm.service,
                     callback: function($$v) {
-                      _vm.array = $$v
+                      _vm.service = $$v
                     },
-                    expression: "array"
+                    expression: "service"
                   }
                 },
                 [_vm._v("Foto en Instagram")]
@@ -40669,13 +40737,13 @@ var render = function() {
               _c(
                 "md-checkbox",
                 {
-                  attrs: { value: "2" },
+                  attrs: { value: "video" },
                   model: {
-                    value: _vm.array,
+                    value: _vm.service,
                     callback: function($$v) {
-                      _vm.array = $$v
+                      _vm.service = $$v
                     },
-                    expression: "array"
+                    expression: "service"
                   }
                 },
                 [_vm._v("Vídeo en Instagram")]
@@ -40720,13 +40788,13 @@ var render = function() {
               _c(
                 "md-checkbox",
                 {
-                  attrs: { value: "3" },
+                  attrs: { value: "story" },
                   model: {
-                    value: _vm.array,
+                    value: _vm.service,
                     callback: function($$v) {
-                      _vm.array = $$v
+                      _vm.service = $$v
                     },
-                    expression: "array"
+                    expression: "service"
                   }
                 },
                 [_vm._v("Instagram Story")]

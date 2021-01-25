@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-content">
                     <div>
-                        <md-checkbox v-model="array" value="1">Foto en Instagram</md-checkbox>
+                        <md-checkbox v-model="service" value="photo">Foto en Instagram</md-checkbox>
                         <br>
                         <span>
                             El servicio consiste en Publicar una foto en Instagram con un texto
@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-content">
                     <div>
-                        <md-checkbox v-model="array" value="2">Vídeo en Instagram</md-checkbox>
+                        <md-checkbox v-model="service" value="video">Vídeo en Instagram</md-checkbox>
                         <br>
                         <span>
                             El servicio consiste en Publicar un Vïdeo en Instagram con un texto
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-content">
                     <div>
-                        <md-checkbox v-model="array" value="3">Instagram Story</md-checkbox>
+                        <md-checkbox v-model="service" value="story">Instagram Story</md-checkbox>
                         <br>
                         <span>
                             El servicio consiste en Publicar un Instagram Story siguiendo el briefing definido por la marca.
@@ -58,7 +58,9 @@
 <script>
 export default {
     data: () => ({
-        array: []
+        service: [],
+        price: [],
+        discount: []
     })
 }
 </script>

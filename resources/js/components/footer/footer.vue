@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer class="footer aling-v">
-      <div>
+      <div v-if="$route.name == 'Form'">
         <span>
           www.wearecontent.com
         </span>
@@ -10,7 +10,7 @@
           Valor: 200 créditos
         </span>
       </div>
-      <div>
+      <div v-if="$route.name == 'Form'">
         <input 
           type="range" 
           min="0" 
@@ -19,29 +19,43 @@
           disabled
         >
       </div>
-      <div>
-        <button class="btn" :class="[ form ? 'green' : 'gray']" @click="changeForm" v-text="form ? 'Registrar red social' : 'Siguiente'"></button>
+      <div v-else>
+        <p v-text="date"></p>
+      </div>
+      <div v-if="$route.name == 'Form'">
+        <button class="btn" :class="[ formState ? 'green' : 'gray']" @click="change" v-text="formState ? 'Registrar red social' : 'Siguiente'"></button>
+      </div>
+      <div v-else>
+        <p v-text="'Desarrollado by: @abraham.r.j'"></p>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
+import { mapState, mapMutations } from 'vuex'
 export default {
   props: ['form'],
   name: "Footer",
   data: () => ({
     amount: 0,
+    date: moment().format('YYYY')
   }),
   methods: {
-    changeForm() {
+    change() {
       this.$emit('change', !this.form)
+      this.changeForm(1)
       if (!this.form) {
         this.amount = 100
       } else {
         this.amount = 0
       }
-    }
+    },
+    ...mapMutations(['changeForm'])
+  },
+  computed: {
+    ...mapState(['formState'])
   }
 }
 </script>
@@ -157,6 +171,10 @@ how to remove the virtical space around the range input in IE*/
     margin: 0;
     /*Edge starts the margin from the thumb, not the track as other browsers do*/
   }
+}
+
+p {
+  margin: 0;
 }
 
 </style>

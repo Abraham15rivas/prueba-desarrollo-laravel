@@ -2,6 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import store from './store'
 import router from './router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
@@ -22,6 +23,7 @@ Vue.component('form-two', require('./components/form/formTwo.vue').default);
 const app = new Vue({
     el: '#app',
     router,
+    store,
     data: () => ({
         form: 0
     }),

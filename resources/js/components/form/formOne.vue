@@ -12,21 +12,21 @@
             <md-field>
                 <label for="country">País mayoria de la audiencia</label>
                 <md-select v-model="country" name="country" id="country">
-                    <md-option>Seleccionar un país</md-option>
-                    <md-option>Venezuela</md-option>
-                    <md-option>Colombia</md-option>
-                    <md-option>Argentina</md-option>
-                    <md-option>España</md-option>
+                    <md-option value="no-valido">Seleccionar un país</md-option>
+                    <md-option value="Venezuela">Venezuela</md-option>
+                    <md-option value="Colombia">Colombia</md-option>
+                    <md-option value="Argentina">Argentina</md-option>
+                    <md-option value="España">España</md-option>
                 </md-select>
             </md-field>
             <md-field>
                 <label for="language">Idioma</label>
                 <md-select v-model="language" name="language" id="language">
-                    <md-option>Seleccionar un idioma</md-option>
-                    <md-option>Español</md-option>
-                    <md-option>Ingles</md-option>
-                    <md-option>Frances</md-option>
-                    <md-option>Portugues</md-option>
+                    <md-option value="no-valido">Seleccionar un idioma</md-option>
+                    <md-option value="Español">Español</md-option>
+                    <md-option value="Ingles">Ingles</md-option>
+                    <md-option value="Frances">Frances</md-option>
+                    <md-option value="Portugues">Portugues</md-option>
                 </md-select>
             </md-field>
             <label for="advertising"><b>Aviso de publicidad</b></label>
@@ -113,7 +113,7 @@
       advertising: null,
       country: null,
       language: null,
-      despcrition: null,
+      description: null,
       name: null,
       email: null,
       url: null,
